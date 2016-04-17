@@ -1,0 +1,21 @@
+---
+
+- name: Install PostgreSQL
+  apt: pkg={{ item }} state=latest update_cache={{ update_cache }} cache_valid_time={{ cache_valid_time }}
+  with_items:
+    - postgresql
+    - postgresql-contrib
+    - libpq-dev
+  tags:
+    - postgresql:install
+
+- name: Ensure PostgreSQL Has Started
+  service: name=postgresql state=started enabled=yes
+
+- name: Allow Only Local Access
+  become: yes
+  copy: src=pg_hba.conf dest=/etc/postgresql/{{ postgresql_version }}/main/pg_hba.conf force=yes
+  notify:
+      - Restarting PostgreSQL
+  tags:
+    - postgresql:configuration
