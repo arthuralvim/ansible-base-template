@@ -9,7 +9,7 @@
   tags:
     - postgresql:install
 
-- name: Ensure PostgreSQL Has Started
+- name: Ensure PostgreSQL is Running
   service: name=postgresql state=started enabled=yes
 
 - name: Allow Only Local Access
