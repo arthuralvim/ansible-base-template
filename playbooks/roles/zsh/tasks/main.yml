@@ -20,7 +20,7 @@
     - ohmyzsh:install
 
 - name: Configure Oh-My-Zsh
-  template: src=zshrc-example.j2 dest="{{ zshrc_path }}" owner="{{ application_username }}" group="{{ application_group }}" backup=yes  mode="0644"
+  template: src=zshrc-example.j2 dest="{{ zshrc_path }}" owner="{{ application_user }}" group="{{ application_group }}" backup=yes  mode="0644"
   tags:
     - ohmyzsh:install
     - ohmyzsh:theme
