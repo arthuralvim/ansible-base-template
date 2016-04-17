@@ -1,0 +1,10 @@
+---
+
+- include: user.yml
+  tags: [user]
+
+- include: keys.yml
+  tags: [keys]
+
+- include: packages.yml
+  tags: [packages]

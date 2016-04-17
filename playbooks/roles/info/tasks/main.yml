@@ -1,0 +1,57 @@
+---
+    - name: Show CPU Info
+      command: cat /proc/cpuinfo
+      register: cpu
+
+    - name: Show Memory Info
+      command: cat /proc/meminfo
+      register: memory
+
+    - name: Show Memory Info - Continue
+      command: free -m
+      register: memory2
+
+    - name: Show Network Info
+      command: netstat -lntu
+      register: network
+
+    - name: Show Storage Info
+      command: df -h
+      register: storage
+
+    - name: Show SO Info
+      command: uname -a
+      register: so
+
+    - name: Show Uptime
+      command: uptime
+      register: uptime
+
+    - name: Show Installed Packages
+      command: dpkg --get-selections | grep -v deinstall
+      register: packages
+
+    - name: Show Processes Being Executed
+      command: ps aux
+      register: processes
+
+    - name: informacoes debug
+      debug: var={{ item }}
+      with_items:
+        - cpu.stdout_lines
+        - memory.stdout_lines
+        - memory2.stdout_lines
+        - storage.stdout_lines
+        - network.stdout_lines
+        - so.stdout_lines
+        - uptime.stdout_lines
+        - packages.stdout_lines
+        - processes.stdout_lines
+
+    - name: Show Inventory Path
+      debug: var=inventory_path
+      when: inventory_path is defined
+
+    - name: Show Project Path
+      debug: var=project_path
+      when: project_path is defined

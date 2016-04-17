@@ -1,0 +1,7 @@
+---
+
+- name: Create Application Group
+  group: name={{ application_group }} system=yes state=present
+
+- name: Create Application User
+  user: name={{ application_user }} group={{ application_group }}
