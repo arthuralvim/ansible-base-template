@@ -1,0 +1,10 @@
+---
+
+rabbitmq_server_name: "{{ inventory_hostname }}"
+
+rabbitmq_admin_user: "rabbitmq_admin"
+rabbitmq_admin_password: "rabbitmq_admin_password"
+
+rabbitmq_application_vhost: "rabbitmq_application"
+rabbitmq_application_user: "rabbitmq_user"
+rabbitmq_application_password: "rabbitmq_password"

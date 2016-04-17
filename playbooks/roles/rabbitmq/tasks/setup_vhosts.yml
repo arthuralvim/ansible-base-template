@@ -1,0 +1,4 @@
+---
+
+- name: Create RabbitMQ Vhost
+  rabbitmq_vhost: name={{ rabbitmq_application_vhost }} state=present

@@ -1,0 +1,20 @@
+---
+
+- name: Create RabbitMQ Default Admin User
+  rabbitmq_user: user={{ rabbitmq_admin_user }}
+                 password={{ rabbitmq_admin_password }}
+                 vhost=/
+                 tags=administrator
+                 state=present
+
+- name: Create RabbitMQ User
+  rabbitmq_user: user={{ rabbitmq_application_user }}
+                 password={{ rabbitmq_application_password }}
+                 vhost={{ rabbitmq_application_vhost }}
+                 configure_priv=.*
+                 read_priv=.*
+                 write_priv=.*
+                 state=present
+
+- name: Remove RabbitMQ Default 'guest' User
+  rabbitmq_user: user=guest state=absent
