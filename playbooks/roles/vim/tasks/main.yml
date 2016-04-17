@@ -1,6 +1,6 @@
 ---
 
-- name: Installing Vim Packages
+- name: Install Vim
   apt: pkg={{ item }} state=latest update_cache={{ update_cache }} cache_valid_time={{ cache_valid_time }}
   with_items:
     - vim

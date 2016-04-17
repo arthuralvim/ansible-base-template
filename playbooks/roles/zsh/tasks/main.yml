@@ -1,6 +1,6 @@
 ---
 
-- name: Installing zsh Packages
+- name: Install Zsh
   apt: pkg={{ item }} state=latest update_cache={{ update_cache }} cache_valid_time={{ cache_valid_time }}
   with_items:
     - git
@@ -9,7 +9,7 @@
     - zsh:install
     - zsh:packages
 
-- name: Set zsh as Default shell
+- name: Set Zsh as Default shell
   user: name="{{ application_user }}" shell=/bin/zsh
   tags:
     - zsh:install
