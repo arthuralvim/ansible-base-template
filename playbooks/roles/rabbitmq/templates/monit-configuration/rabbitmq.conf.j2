@@ -1,0 +1,6 @@
+check process rabbitmq with pidfile /var/run/rabbitmq/pid
+group rabbitmq
+start program "/usr/sbin/service rabbitmq-server start"
+stop program "/usr/sbin/service rabbitmq-server stop"
+if does not exist for 3 cycles then restart
+if failed port 5672 4 times within 6 cycles then restart

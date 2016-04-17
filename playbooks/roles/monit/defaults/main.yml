@@ -1,0 +1,10 @@
+---
+
+monit_paths: []
+monit_enabled: true
+monit_nginx: true
+monit_log: "/var/log/monit.log"
+monit_check_intervals: 60
+monit_users:
+  - {name: 'admin', password: 'monit', readonly: no }
+  - {name: 'user', password: 'UOR6Xt3AJes7FknpvyqT', readonly: yes }

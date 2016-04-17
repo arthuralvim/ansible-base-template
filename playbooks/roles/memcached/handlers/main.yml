@@ -2,3 +2,6 @@
 
 - name: Restarting Memcached
   service: name=memcached state=restarted enabled=yes
+
+- name: Restarting Monit
+  service: name=monit state=restarted enabled=yes

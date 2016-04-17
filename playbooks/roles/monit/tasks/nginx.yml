@@ -1,0 +1,15 @@
+---
+
+- name: Copy Nginx Configuration File to sites-available Folder.
+  template: src=monit.conf.j2 dest=/etc/nginx/sites-enabled/monit.conf
+  tags:
+    - monit:configuration
+  notify:
+    - Restarting Nginx
+
+- name: Monitoring Nginx
+  template: src=monit-configuration/nginx.conf.j2 dest=/etc/monit/conf.d/nginx.conf
+  when: monit_nginx
+  tags:
+    - monit:nginx
+  notify: Restarting Monit

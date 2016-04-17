@@ -1,0 +1,5 @@
+---
+
+- name: Monitoring RabbitMQ - Monit
+  template: src=monit-configuration/rabbitmq.conf.j2 dest=/etc/monit/conf.d/rabbitmq.conf
+  notify: Restarting Monit

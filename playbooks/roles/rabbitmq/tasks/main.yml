@@ -23,3 +23,9 @@
 
 - name: Ensure RabbitMQ is Running
   service: name=rabbitmq-server state=started enabled=yes
+
+- include: monit.yml
+  tags:
+    - rabbitmq:monit
+  when: monit_rabbitmq
+

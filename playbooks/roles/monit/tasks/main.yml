@@ -1,0 +1,29 @@
+---
+
+- name: Install Monit
+  apt: pkg={{ item }} state=latest update_cache={{ update_cache }} cache_valid_time={{ cache_valid_time }}
+  with_items:
+    - monit
+  tags:
+    - monit:install
+
+- name: Copy Configuration File to Monit
+  template: src=monitrc.j2 dest=/etc/monit/monitrc backup=yes
+  tags:
+    - monit:configuration
+  notify:
+    - Restarting Monit
+
+- name: Ensure Monit is Running
+  service: name=monit state=started enabled=yes
+
+- include: monit-disk-usage.yml
+  tags:
+    - monit
+    - monit:storage
+
+- include: nginx.yml
+  tags:
+    - monit
+    - nginx:monit
+  when: monit_nginx

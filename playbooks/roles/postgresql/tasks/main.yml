@@ -19,3 +19,8 @@
       - Restarting PostgreSQL
   tags:
     - postgresql:configuration
+
+- include: monit.yml
+  tags:
+    - postgresql:monit
+  when: monit_postgresql

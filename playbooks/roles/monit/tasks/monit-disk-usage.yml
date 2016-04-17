@@ -1,0 +1,6 @@
+---
+
+- name: Monitoring Disk Usage
+  template: src=monit-configuration/disk-usage.conf.j2 dest=/etc/monit/conf.d/disk-usage-{{ item.name }}.conf
+  with_items: '{{ monit_paths }}'
+  notify: Restarting Monit

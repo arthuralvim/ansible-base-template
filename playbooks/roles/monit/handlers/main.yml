@@ -1,0 +1,7 @@
+---
+
+- name: Restarting Monit
+  service: name=monit state=restarted
+
+- name: Restarting Nginx
+  service: name=nginx state=restarted

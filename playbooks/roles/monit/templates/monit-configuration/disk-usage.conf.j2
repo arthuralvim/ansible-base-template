@@ -1,0 +1,7 @@
+check filesystem {{ item.name }} with path {{ item.path }}
+group server
+if failed permission 660 then unmonitor
+if failed uid root then unmonitor
+if failed gid disk then unmonitor
+if space usage > 80 % then alert
+if inode usage > 80 % then alert

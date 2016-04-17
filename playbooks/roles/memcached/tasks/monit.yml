@@ -1,21 +1,7 @@
 ---
 
-- name: Install Memcached
-  apt: name=memcached update_cache={{ update_apt_cache }} state=installed
-  tags: packages
-
-- name: Create the Memcached configuration file
-  template: src=memcached.conf.j2
-            dest=/etc/memcached.conf
-            mode=0644
-            backup=yes
-  notify:
-    - restart memcached
-
-- name: Ensure the Memcached service is running
-  service: name=memcached state=started enabled=yes
-
-- name: Ensure Memcached service is monitored by Monit
-  copy: src=monit/memcached.conf
-        dest=/etc/monit/conf.d/memcached.conf
-  notify: reinicia monit
+- name: Monitoring Memcached
+  template: src=monit-configuration/memcached.conf.j2 dest=/etc/monit/conf.d/memcached.conf
+  tags:
+    - monit:memcached
+  notify: Restarting Monit

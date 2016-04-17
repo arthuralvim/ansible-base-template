@@ -1,0 +1,7 @@
+---
+
+- name: Monitoring PostgreSQL
+  template: src=monit-configuration/postgresql.conf.j2 dest=/etc/monit/conf.d/postgresql.conf
+  tags:
+    - monit:postgresql
+  notify: Restarting Monit

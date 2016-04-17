@@ -2,3 +2,6 @@
 
 - name: Restarting RabbitMQ
   service: name=rabbitmq-server state=restarted
+
+- name: Restarting Monit
+  service: name=monit state=restarted

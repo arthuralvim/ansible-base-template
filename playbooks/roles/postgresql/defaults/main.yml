@@ -1,3 +1,4 @@
 ---
 
-postgresql_version: "9.4"
+postgresql_version: "9.3"
+monit_postgresql: true

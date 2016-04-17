@@ -17,3 +17,8 @@
 - name: Ensure Memcached is Running
   service: name=memcached state=started enabled=yes
 
+- include: monit.yml
+  tags:
+    - memcached:monit
+  when: monit_memcached
+
