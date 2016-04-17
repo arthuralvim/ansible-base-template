@@ -1,5 +1,5 @@
 [vagrant]
-vagrant_local_0 ansible_ssh_host=33.33.33.30 ansible_ssh_port=22
+vagrant_local_0 ansible_ssh_host=33.33.33.33 ansible_ssh_port=22
 
 [local:children]
 vagrant
