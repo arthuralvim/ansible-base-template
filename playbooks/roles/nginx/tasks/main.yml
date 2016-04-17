@@ -1,0 +1,15 @@
+---
+
+- name: Install Nginx
+  apt: pkg={{ item }} state=latest update_cache={{ update_cache }} cache_valid_time={{ cache_valid_time }}
+  with_items:
+    - nginx
+  tags:
+    - nginx:install
+
+- name: Disable Default Site
+  file: path=/etc/nginx/sites-enabled/default state=absent
+  notify: Restarting Nginx
+
+- name: Ensure Nginx is Running
+  service: name=nginx state=started enabled=yes
