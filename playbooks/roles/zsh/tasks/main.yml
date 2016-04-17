@@ -1,0 +1,26 @@
+---
+
+- name: Installing zsh Packages
+  apt: pkg={{ item }} state=latest update_cache={{ update_cache }} cache_valid_time={{ cache_valid_time }}
+  with_items:
+    - git
+    - zsh
+  tags:
+    - zsh:install
+    - zsh:packages
+
+- name: Set zsh as Default shell
+  user: name="{{ application_user }}" shell=/bin/zsh
+  tags:
+    - zsh:install
+
+- name: Installing Oh-My-Zsh
+  git: repo="{{ zsh_repository}}" dest="{{ zsh_path }}" update=yes
+  tags:
+    - ohmyzsh:install
+
+- name: Configure Oh-My-Zsh
+  template: src=zshrc-example.j2 dest="{{ zshrc_path }}" owner="{{ application_username }}" group="{{ application_group }}" backup=yes  mode="0644"
+  tags:
+    - ohmyzsh:install
+    - ohmyzsh:theme

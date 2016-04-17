@@ -1,0 +1,7 @@
+---
+
+zsh_path: "/home/{{ application_user }}/.oh-my-zsh"
+zshrc_path: "/home/{{ application_user }}/.zshrc"
+zsh_theme_path: "{{ zsh_path }}/themes"
+zsh_repository: "https://github.com/robbyrussell/oh-my-zsh.git"
+zsh_theme: "junkfood"
